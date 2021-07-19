@@ -1,1 +1,38 @@
-<h1>Hello world.</h1>
+<div class="container d-flex flex-column align-items-end col-sm-9">
+  <div class="container d-flex flex-column col-8">
+    <form action="" class="my-3 my-4">
+      <select class="form-select" aria-label="Default select example">
+        <option selected>類別</option>
+        {{#each categories}}
+        <option value="{{this._id}}">{{this.title}}</option>
+        {{/each}}
+      </select>
+    </form>
+
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <div style="margin-right: 3em;">總金額：</div>
+      <div class="total-amount">{{totalAmount}}</div>
+    </div>
+  </div>
+
+  <div class="container" id="data-panel">
+
+    {{#each records}}
+    <div class="row">
+      <div class="col col-auto">
+        <i class="fas {{this.category.icon}} category-icon"></i>
+      </div>
+      <div class="col">
+        <div>{{this.name}}</div>
+        <div class="fs-7">{{toDate this.date}}</div>
+      </div>
+      <div class="col col-auto text-end">{{this.amount}}</div>
+      <div class="col col-auto">修改</div>
+      <div class="col col-auto">刪除</div>
+    </div>
+    {{/each}}
+
+    <div class="my-5" style="display: flex; justify-content: center;">
+      <button type="button" class="btn bg-orange text-white">新增支出</button>
+    </div>
+  </div>
