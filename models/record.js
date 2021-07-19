@@ -6,11 +6,11 @@ const recordSchema = new Schema({
     type: String,
     required: true
   },
-  date: {
+  category: {
     type: String,
     required: true
   },
-  category: {
+  date: {
     type: String,
     required: true
   },
