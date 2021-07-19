@@ -1,0 +1,50 @@
+<div class="container my-3 my-md-5">
+  <form action="/records/{{record._id}}?_method=PUT" method="post" class="needs-validation" novalidate>
+
+    <div class="mb-3 row">
+      <div class="col-sm-2 fs-7">*必填欄位</div>
+      <div class="col-sm-10">請輸入你的支出</div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="name" class="col-sm-2 col-form-label">名稱*：</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="name" id="name" value="{{record.name}}" required>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="date" class="col-sm-2 col-form-label">日期*：</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" name="date" id="date" value="{{toDate record.date}}" required>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="category" class="col-sm-2 col-form-label">類別*：</label>
+      <div class="col-sm-10">
+        <select class="form-select" name="category" id="category" data-value="{{record.category}}"
+          aria-label="Default select" required>
+          {{#each categories}}
+          <option value="{{this._id}}">{{this.title}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="amount" class="col-sm-2 col-form-label">金額*：</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" name="amount" id="amount" value="{{record.amount}}" required>
+      </div>
+    </div>
+
+    <div class="my-5 row d-flex justify-content-end">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-outline-dark col-12">送出</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="/javascripts/records.js"></script>

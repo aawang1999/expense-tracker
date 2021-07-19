@@ -1,0 +1,36 @@
+.total-amount {
+  font-size: 3em;
+  color: var(--bs-orange);
+}
+
+.category-icon {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  color: #ffdfbf;
+  width: 40px;
+}
+
+.bg-orange {
+  background-color: var(--bs-orange);
+}
+
+.fs-7 {
+  font-size: 0.75rem
+}
+
+#data-panel .row {
+  padding: 0.3rem 0;
+  border: 1px solid rgba(0,0,0,.125);
+  border-width: 0 0 1px;
+}
+
+#data-panel .col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+}
