@@ -4,19 +4,19 @@ const Schema = mongoose.Schema
 const recordSchema = new Schema({
   name: {
     type: String,
-    required: true
+    require: true
   },
   category: {
-    type: String,
-    required: true
+    type: Schema.Types.ObjectId,
+    ref: 'Category'
   },
   date: {
-    type: String,
+    type: Date,
     required: true
   },
   amount: {
     type: Number,
-    required: true
+    require: true
   }
 })
 
