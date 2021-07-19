@@ -27,8 +27,13 @@
         <div class="fs-7">{{toDate this.date}}</div>
       </div>
       <div class="col col-auto text-end">{{this.amount}}</div>
-      <div class="col col-auto">修改</div>
-      <div class="col col-auto">刪除</div>
+      <div class="col col-auto">
+        <a href="/records/{{this._id}}/edit" class="btn btn-secondary">修改</a>
+      </div>
+      <div class="col col-auto">
+        <button type="button" class="btn btn-danger btn-delete" data-id="{{this._id}}" data-bs-toggle="modal"
+          data-bs-target="#deleteModal">刪除</button>
+      </div>
     </div>
     {{/each}}
 
@@ -38,3 +43,33 @@
       </a>
     </div>
   </div>
+
+  <!-- Modal -->
+
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">刪除記錄</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          確定要刪除嗎？
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+          <form action="" method="post" id="delete-form">
+            <button type="submit" class="btn btn-danger">刪除</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const dataPanel = document.querySelector('#data-panel')
+    const deleteForm = document.querySelector('#delete-form')
+    dataPanel.addEventListener('click', function (event) {
+      if (event.target.classList.contains('btn-delete')) deleteForm.action = `/records/${event.target.dataset.id}?_method=DELETE`
+    })
+  </script>
