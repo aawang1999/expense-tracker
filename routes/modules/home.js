@@ -3,17 +3,21 @@ const router = express.Router()
 const Category = require('../../models/category')
 const Record = require('../../models/record')
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   const category = req.query.category
   const filter = {}
   if (category) { filter.category = category }
 
+  const categories = await Category.find().lean()
+
+  /*
   const categories = []
 
   Category.find()
     .lean()
     .then(category => categories.push(...category))
     .catch(error => console.log(error))
+  */
 
   Record.find(filter)
     .populate('category')
